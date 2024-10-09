@@ -1,1 +1,6 @@
-./mysql/
+### JetBrains IDEs ###
+.idea/
+
+### Data and logs ###
+data/
+logs/

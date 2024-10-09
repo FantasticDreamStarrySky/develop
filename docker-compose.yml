@@ -8,9 +8,9 @@ services:
       SET_CONTAINER_TIMEZONE: true
       CONTAINER_TIMEZONE: Asia/Shanghai
     volumes:
-      - ./mysql/conf:/etc/mysql/conf.d
-      - ./mysql/data:/var/lib/mysql
-      - ./mysql/logs:/var/log/mysql
+      - ./config/mysql/conf:/etc/mysql/conf.d
+      - ./data/mysql:/var/lib/mysql
+      - ./logs/mysql:/var/log/mysql
     ports:
       - "3306:3306"
     networks:
@@ -21,8 +21,8 @@ services:
     image: redis
     container_name: Redis
     volumes:
-      - ./redis/conf:/etc/redis/redis.conf
-      - ./redis/data:/data
+      - ./config/redis/conf:/etc/redis/redis.conf
+      - ./data/redis:/data
     ports:
       - "6379:6379"
     networks:
