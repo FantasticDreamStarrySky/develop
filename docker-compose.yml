@@ -1,0 +1,35 @@
+services:
+  MySQL:
+    image: mysql
+    container_name: MySQL
+    environment:
+      MYSQL_ROOT_PASSWORD: 1234
+      TZ: Asia/Shanghai
+      SET_CONTAINER_TIMEZONE: true
+      CONTAINER_TIMEZONE: Asia/Shanghai
+    volumes:
+      - ./mysql/conf:/etc/mysql/conf.d
+      - ./mysql/data:/var/lib/mysql
+      - ./mysql/logs:/var/log/mysql
+    ports:
+      - "3306:3306"
+    networks:
+      - develop
+    restart: always
+
+  Redis:
+    image: redis
+    container_name: Redis
+    volumes:
+      - ./redis/conf:/etc/redis/redis.conf
+      - ./redis/data:/data
+    ports:
+      - "6379:6379"
+    networks:
+      - develop
+    restart: always
+
+networks:
+  develop:
+    name: Develop
+    driver: bridge
